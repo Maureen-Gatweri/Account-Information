@@ -74,12 +74,31 @@ class Account:
             return "Incorrect password, unable to view the history"
         
 
-    def check_minimum_balance(self,pin,min_balance):
+    def set_minimum_balance(self,pin,min_balance):
         if pin==self.pin:
             self.min_balance=min_balance
             return f"Minimum balance set to ${self.min_balance}. "
         else:
             return "Incorrect pin. Put the corrrect pin to set the minimum balance"
+        
+    def transfer_funds(self,pin,receiver_account,amount):
+        if pin==self.pin:
+         if self.balance>=amount:
+                self.balance=amount
+                receiver_account.balance+=amount
+                return f"${amount} transferred successfuly to the recipients account"
+         
+
+    def close_account(self,provided_pin):
+        if self.pin ==provided_pin:
+            print ("Successfully Closing the account")
+            
+        else:
+            print ("Invalid pin, put the right pin for the account to be closed")
+          
+            
+
+
         
 
    
